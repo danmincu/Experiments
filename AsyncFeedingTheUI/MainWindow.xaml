@@ -1,0 +1,28 @@
+﻿<Window x:Class="AsyncFeedingTheUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AsyncFeedingTheUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Button DockPanel.Dock="Top" Command="{Binding FetchRecordsCommand}" MinHeight="40">Fetch</Button>
+            <Button DockPanel.Dock="Top" Command="{Binding FetchFooCommand}" MinHeight="40">Foo</Button>
+
+            <ListBox ItemsSource="{Binding CollectionView}" VerticalAlignment="Stretch"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" Margin="10,0,10,0"></TextBlock>
+                            <TextBlock Text="{Binding Code}" Margin="0,0,10,0"></TextBlock>
+                            <TextBlock Text="{Binding Foo.Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+    </Grid>
+</Window>
