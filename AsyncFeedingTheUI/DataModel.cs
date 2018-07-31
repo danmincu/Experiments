@@ -66,7 +66,11 @@ namespace AsyncFeedingTheUI
                     ItemCollection.Add(country);
                 }
             }
-            // todo this.CollectionView?.MoveCurrentToFirst();
+            await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,new Action( async () =>
+            {
+                this.collectionView?.MoveCurrentToFirst();
+                await Task.Delay(100).ConfigureAwait(false);
+            }));
         }
 
         private async Task ExecuteFetchFooAsync()
